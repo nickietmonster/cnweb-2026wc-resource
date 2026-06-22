@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 赛事专题 · 资料索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, Helvetica, sans-serif;
+            background: linear-gradient(145deg, #f8e3c2 0%, #f3d5a8 30%, #ecc494 70%, #e0b47c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1.5rem 1rem;
+        }
+
+        .magazine-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 主卡片容器 */
+        .cover-card {
+            background-color: #ffffff;
+            border-radius: 36px 36px 28px 28px;
+            box-shadow: 0 20px 50px rgba(120, 70, 20, 0.20), 0 6px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 2.2rem 2.5rem 2.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        /* 杂志页眉 — 模拟横幅 */
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid #f0dbb8;
+            padding-bottom: 0.9rem;
+        }
+
+        .hero-badge .vol {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b48a5a;
+            background: #f7ecd9;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+
+        .hero-badge .issue-date {
+            font-size: 0.85rem;
+            color: #7f6242;
+            margin-left: auto;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #3f2c15;
+            margin: 0.6rem 0 0.2rem;
+        }
+
+        .hero-sub {
+            font-size: 1.0rem;
+            color: #6f5536;
+            background: #f9efe0;
+            display: inline-block;
+            padding: 0.2rem 1.2rem 0.2rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.4rem;
+            font-weight: 400;
+            border: 1px solid #e8d3b5;
+        }
+
+        /* 背景说明区块 */
+        .background-note {
+            background: #fbf6ed;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0 2rem;
+            border-left: 6px solid #dbaa6b;
+            color: #3f2a13;
+        }
+
+        .background-note h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #5d3f1d;
+            margin-bottom: 0.6rem;
+        }
+
+        .background-note p {
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        /* 三段自然介绍卡片 (杂志风格) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.6rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .feature-item {
+            background: #faf7f2;
+            padding: 1.4rem 1.2rem 1.6rem;
+            border-radius: 28px;
+            transition: transform 0.1s ease;
+            border: 1px solid #ebddcb;
+            box-shadow: 0 2px 6px rgba(180, 130, 70, 0.06);
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            color: #4a3119;
+            margin-bottom: 0.55rem;
+            border-left: 4px solid #dbaa6b;
+            padding-left: 0.75rem;
+        }
+
+        .feature-item p {
+            color: #4b3a26;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .feature-item p a {
+            color: #9e6f3a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #c7a87b;
+            transition: border 0.15s;
+        }
+
+        .feature-item p a:hover {
+            border-bottom: 2px solid #7b552b;
+            color: #5c3f1d;
+        }
+
+        /* FAQ 摘要 — 用折叠样式的模拟 */
+        .faq-summary {
+            background: #fcf9f4;
+            border-radius: 30px;
+            padding: 1.5rem 1.8rem 1.2rem;
+            margin: 2.0rem 0 1.2rem;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .faq-summary h3 {
+            font-size: 1.1rem;
+            color: #3c2b16;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-summary h3 span {
+            background: #dbaa6b;
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.1rem 0.7rem;
+            border-radius: 40px;
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-list li {
+            padding: 0.5rem 0 0.7rem;
+            border-bottom: 1px solid #ebddcb;
+            display: flex;
+            gap: 0.6rem;
+            align-items: baseline;
+        }
+
+        .faq-list li:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #5f4427;
+            min-width: 4.8rem;
+            font-size: 0.92rem;
+        }
+
+        .faq-a {
+            color: #3e2c17;
+            line-height: 1.5;
+            font-size: 0.92rem;
+        }
+
+        .faq-a a {
+            color: #9e6f3a;
+            text-decoration: none;
+            border-bottom: 1px dotted #c2a074;
+        }
+
+        .faq-a a:hover {
+            border-bottom: 2px solid #7b552b;
+        }
+
+        /* 页尾访问提示 */
+        .footer-visit {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px dashed #dcc6ab;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-note {
+            color: #564026;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .footer-note a {
+            color: #7a592f;
+            font-weight: 600;
+            text-decoration: none;
+            background: #f3e5d2;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+            border: 1px solid #dbb78b;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .footer-note a:hover {
+            background: #dbaa6b;
+            color: #2b1d0d;
+            border-color: #b37d47;
+        }
+
+        .meta-stamp {
+            font-size: 0.75rem;
+            color: #917a5b;
+            letter-spacing: 0.5px;
+            background: #f2e5d1;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .cover-card {
+                padding: 1.6rem 1.2rem 2rem;
+                border-radius: 28px;
+            }
+            .hero-title {
+                font-size: 2.0rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .faq-list li {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .faq-q {
+                min-width: auto;
+            }
+            .footer-visit {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .background-note {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-badge .issue-date {
+                margin-left: 0;
+                width: 100%;
+            }
+            .hero-title {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="magazine-wrapper">
+        <div class="cover-card">
+            <!-- 首页横幅 -->
+            <div class="hero-badge">
+                <span class="vol">⚽ 专题 · 赛事档案</span>
+                <span class="issue-date">2025 · 春季更新</span>
+            </div>
+            <h1 class="hero-title">世界杯 · 对照与延伸</h1>
+            <div class="hero-sub">从日常查询到背景梳理</div>
+
+            <!-- 背景说明 -->
+            <div class="background-note">
+                <h3>📋 为什么需要一份结构化的说明页？</h3>
+                <p>每到国际赛事周期，围绕 <strong>世界杯</strong> 的赛程、历史记录、球队数据常被反复查询。这份页面将零散信息整理为可对照的段落，方便快速浏览背景脉络，也适合作为延伸阅读的起点。内容均基于公开资料与赛事常识，保持平实。</p>
+            </div>
+
+            <!-- 三段自然介绍（日常查询 / 对照 / 延伸阅读） -->
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>📆 日常查询</h4>
+                    <p>比赛日历、分组情况、往届冠军等基础条目，是查询频率最高的内容。例如想了解某届决赛比分或最佳射手，直接定位到对应年份即可。通过 <a href="https://ssl--shijiebei.com">世界杯</a> 专题页面可以快速过滤出需要的信息层级，减少翻找时间。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔁 对照阅读</h4>
+                    <p>不同年代赛制、主办国变化、夺冠次数等横向对比，能帮助理解赛事演变。将所有关键数据并排放置，比逐篇翻阅更直观。页面中嵌入的参考链接均指向稳定来源，其中 <a href="https://ssl--shijiebei.com">世界杯</a> 索引页整理了多维度统计，适合反复对比。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🌐 延伸阅读</h4>
+                    <p>从经典比赛回顾到规则修订史，很多细节值得展开。本页作为导航性介绍，不堆砌冗文；若想深入某一话题（如淘汰赛阶段演变），可直接从 <a href="https://ssl--shijiebei.com">世界杯</a> 资料区找到延伸材料。保持克制的信息密度，让阅读更专注。</p>
+                </div>
+            </div>
+
+            <!-- FAQ 摘要 (模拟常见问题) -->
+            <div class="faq-summary">
+                <h3><span>FAQ</span> 快速摘要 · 常见对照点</h3>
+                <ul class="faq-list">
+                    <li>
+                        <span class="faq-q">赛制</span>
+                        <span class="faq-a">目前 32 支球队决赛圈，2026 年起扩军至 48 支。分组循环 + 淘汰赛，赛程跨度约一个月。</span>
+                    </li>
+                    <li>
+                        <span class="faq-q">冠军纪录</span>
+                        <span class="faq-a">巴西 5 次夺冠居首，德国、意大利各 4 次，阿根廷 3 次。详细榜单见 <a href="https://ssl--shijiebei.com">世界杯</a> 历史数据页。</span>
+                    </li>
+                    <li>
+                        <span class="faq-q">主办国</span>
+                        <span class="faq-a">2026 年由美国、加拿大、墨西哥联合主办；2030 年由西班牙、葡萄牙、摩洛哥等共同承办。</span>
+                    </li>
+                    <li>
+                        <span class="faq-q">时差参考</span>
+                        <span class="faq-a">多数比赛在当地下午至晚间进行，对应北京时间深夜或清晨，可提前用赛程表规划观看。</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 页尾访问提示 -->
+            <div class="footer-visit">
+                <div class="footer-note">
+                    ⚡ 如需查阅完整赛历、球队数据或历届纪录，可移步 
+                    <a href="https://ssl--shijiebei.com">世界杯</a> 
+                    专题页面 · 信息持续整理
+                </div>
+                <div class="meta-stamp">v1.0  · 索引参考</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
