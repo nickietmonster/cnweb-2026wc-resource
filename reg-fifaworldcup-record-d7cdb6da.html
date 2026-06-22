@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 信息导览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f1eb;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2b2b2b;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fcfaf7;
+            padding: 2.5rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        /* hero 区域 */
+        .hero {
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #e5ddd4;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1f2a36;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #4b4b4b;
+            max-width: 75%;
+        }
+
+        @media (max-width: 640px) {
+            .hero p {
+                max-width: 100%;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ede8e0;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+            border-color: #d6cdc0;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #1f2a36;
+            letter-spacing: -0.01em;
+        }
+
+        .card .sub {
+            color: #6f6b65;
+            font-size: 0.9rem;
+            margin-bottom: 0.7rem;
+            display: block;
+            border-left: 3px solid #dacfc1;
+            padding-left: 0.6rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #3d3d3d;
+        }
+
+        /* 引用块 / 提示框 */
+        .inset-note {
+            background: #f6f2eb;
+            border-left: 4px solid #b8aa97;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0 1.8rem;
+            border-radius: 0 14px 14px 0;
+            font-size: 0.98rem;
+            color: #3a3a3a;
+        }
+
+        .inset-note strong {
+            color: #29231c;
+        }
+
+        .inset-note a {
+            color: #306080;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.1s;
+        }
+
+        .inset-note a:hover {
+            color: #1a3a4f;
+        }
+
+        /* 段落自然链接样式 */
+        .body-copy a {
+            color: #306080;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+
+        .body-copy a:hover {
+            background: #eae2d8;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        .body-copy p {
+            margin-bottom: 1.1rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: #f9f5ef;
+            border-radius: 24px;
+            padding: 1.4rem 1.8rem;
+            margin: 2.4rem 0 1.2rem;
+            border: 1px solid #e2dad1;
+        }
+
+        .faq-mini h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #322d27;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .faq-item {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 0.9rem;
+            align-items: flex-start;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #1f2a36;
+            min-width: 4.2rem;
+        }
+
+        .faq-item .a {
+            color: #424242;
+            font-size: 0.95rem;
+        }
+
+        .faq-item .a a {
+            color: #306080;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0d8ce;
+            margin: 1.8rem 0;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            color: #6a645c;
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px solid #e5ddd4;
+            padding-top: 1.8rem;
+        }
+
+        .footer-note a {
+            color: #306080;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero 主视觉 -->
+    <div class="hero">
+        <h1>世界杯 · 信息入口与使用说明</h1>
+        <p>了解赛事登记平台的结构、适用场景与访问方式，帮助访问者快速确认其用途与边界。</p>
+    </div>
+
+    <!-- 信息卡片：用途 + 人群 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 平台用途</h3>
+            <span class="sub">注册与信息核对</span>
+            <p>该平台主要面向与世界杯相关的登记流程，提供身份验证、资料提交及状态查询等基础功能。不涉及购票或直播，专注信息管理环节。</p>
+        </div>
+        <div class="card">
+            <h3>👥 适合人群</h3>
+            <span class="sub">参与者 / 机构 / 合作方</span>
+            <p>已获得邀请或需要录入资料的人员、赛事组织协作方、需要确认登记状态的个人用户。普通观众若无登记需求，可暂不访问。</p>
+        </div>
+        <div class="card">
+            <h3>🔐 稳定性说明</h3>
+            <span class="sub">访问与响应</span>
+            <p>平台采用标准网页架构，在主流浏览器及移动设备上均可正常显示。如遇加载缓慢，可检查本地网络或稍后重试，建议使用最新版浏览器。</p>
+        </div>
+        <div class="card">
+            <h3>🧭 导航方式</h3>
+            <span class="sub">页面结构</span>
+            <p>首页以简洁入口为主，内部包含表单、说明页及帮助文档。所有功能围绕登记流程设计，层级清晰，无需频繁跳转。</p>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框  -->
+    <div class="inset-note">
+        <strong>ℹ️ 关于直接访问</strong><br>
+        如果你希望使用官方登记服务，可以在下方句子中找到指向平台的链接。请留意：本介绍页仅为信息说明，实际功能与数据均以平台自身页面为准。
+    </div>
+
+    <!-- 自然链接段落 + 承接说明 -->
+    <div class="body-copy">
+        <p>
+            对于需要提交或确认赛事信息的用户，<a href="https://reg-fifaworldcup.com">世界杯</a> 是当前的主要登记入口。
+            页面提供多语种引导，不同身份的用户可根据自身角色选择对应的填写通道。
+        </p>
+        <p>
+            该平台不设公众购票或直播内容，所有操作围绕登记资料展开。如果你想了解登记前的准备事项，可以参考平台内的帮助文档；若仅是想确认官网外观，直接访问 <a href="https://reg-fifaworldcup.com">世界杯</a> 即可看到首页说明。
+        </p>
+        <p>
+            部分用户可能会混淆登记站与赛事主站的区别——前者专注于数据处理，后者则承载新闻、赛程与品牌内容。本介绍页旨在厘清前者的定位与访问方式。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要（精简版） -->
+    <div class="faq-mini">
+        <h4>常见疑问摘要</h4>
+        <div class="faq-item">
+            <span class="q">Q：</span>
+            <span class="a">是否必须注册账号才能浏览？—— 首页及部分说明可以公开查看，但提交信息需要登录或验证凭证。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：</span>
+            <span class="a">移动端体验如何？—— 页面适配手机屏幕，表单使用标准控件，建议在稳定网络下操作。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：</span>
+            <span class="a">遇到无法加载的情况怎么办？—— 可尝试清除缓存或更换 DNS，仍无效时可留意官方公告。平台链接：<a href="https://reg-fifaworldcup.com">世界杯</a>。</span>
+        </div>
+    </div>
+
+    <!-- 额外说明段落：场景延伸 -->
+    <div class="body-copy" style="margin-top: 0.8rem;">
+        <p>
+            假设你是赛事合作机构的工作人员，需要批量核对人员信息，那么通过 <a href="https://reg-fifaworldcup.com">世界杯</a> 平台下载或导入数据会是比较高效的路径。
+            页面内通常设有字段说明与格式示例，降低误操作的可能。
+        </p>
+        <p>
+            对于普通访客而言，倘若只是希望获取赛事动态或观看直播，该登记站并非合适目的页面；建议通过搜索引擎查找官方主站。本介绍页仅作为功能区分与访问参考，不替代平台自身的条款。
+        </p>
+    </div>
+
+    <!-- 分隔线 + 页脚 -->
+    <hr>
+    <div class="footer-note">
+        本页为独立介绍文档 · 与平台无直接隶属关系 · 内容仅供信息参考<br>
+        页面生成于稳定环境 · 建议将 <a href="https://reg-fifaworldcup.com">世界杯</a> 加入书签方便后续使用
+    </div>
+
+</div>
+</body>
+</html>
