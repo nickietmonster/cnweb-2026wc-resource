@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亚洲 CNS 世界杯 – 产品说明与使用参考</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f5f7;
+            color: #2d2f33;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+        }
+        .page-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        /* 卡片系统 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9eaee;
+            padding: 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+        /* hero区 */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 1.5rem 2rem;
+            background: #ffffff;
+            border-bottom: 1px solid #e9eaee;
+            border-radius: 20px;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1d1f23;
+            margin-bottom: 0.6rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #5b5e66;
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 1px solid #e2e4e9;
+            padding-top: 0.8rem;
+        }
+        /* 标题 */
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #1d1f23;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.3px;
+            border-left: 4px solid #8b8fa3;
+            padding-left: 0.9rem;
+        }
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 550;
+            margin: 1.2rem 0 0.5rem;
+            color: #2a2c30;
+        }
+        p, li {
+            color: #3e4046;
+            font-size: 1rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            position: relative;
+        }
+        ul li::before {
+            content: "•";
+            color: #8b8fa3;
+            font-weight: 600;
+            position: absolute;
+            left: 0.2rem;
+        }
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            margin: 1rem 0 0.2rem;
+        }
+        .tag {
+            background: #f0f1f4;
+            border-radius: 40px;
+            padding: 0.25rem 1rem;
+            font-size: 0.9rem;
+            color: #3d4047;
+            border: 1px solid #dadce2;
+        }
+        .suggest-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
+        }
+        .suggest-item {
+            background: #f8f9fc;
+            border-radius: 16px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e4e5eb;
+        }
+        .suggest-item strong {
+            display: block;
+            font-weight: 550;
+            margin-bottom: 0.3rem;
+            color: #22252b;
+        }
+        .suggest-item p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #edeeF2;
+        }
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+        .faq-item strong {
+            font-weight: 550;
+            color: #22252b;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .cta-line {
+            background: #f8f9fc;
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem;
+            display: inline-block;
+            margin: 0.6rem 0 0.2rem;
+        }
+        a {
+            color: #3a5c8c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cdd5e3;
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: #2d4a73;
+            color: #2d4a73;
+        }
+        .footer-note {
+            text-align: center;
+            color: #7b7f89;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding: 1.5rem 0.5rem 0.2rem;
+            border-top: 1px solid #e2e5eb;
+        }
+        @media (max-width: 720px) {
+            body { padding: 1.2rem 0.8rem; }
+            .card { padding: 1.4rem 1.2rem; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero { padding: 1.8rem 1rem; }
+            .suggest-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .tag-group { flex-direction: column; gap: 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 摘要 -->
+    <div class="hero">
+        <h1>亚洲 CNS 世界杯</h1>
+        <div class="sub">一份面向用户的产品说明 · 快速识别用途与使用场景</div>
+    </div>
+
+    <!-- 卡片1: 产品摘要 -->
+    <div class="card">
+        <h2>📌 这是什么？</h2>
+        <p style="margin-bottom: 0.6rem;">
+            <strong>亚洲 CNS 世界杯</strong> 是一个聚焦区域性竞技与内容展示的线上平台，围绕“世界杯”主题整合赛事资讯、参与入口与相关信息。站点结构清晰，主要服务希望一站式了解活动安排、规则及更新动态的用户。
+        </p>
+        <div class="tag-group">
+            <span class="tag">🏟️ 竞技主题</span>
+            <span class="tag">📋 内容聚合</span>
+            <span class="tag">🌏 亚洲区域</span>
+            <span class="tag">⚙️ 信息工具</span>
+        </div>
+    </div>
+
+    <!-- 卡片2: 亮点与特点 -->
+    <div class="card">
+        <h2>✨ 关键特点</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.4rem; justify-content: space-between;">
+            <div style="flex: 1; min-width: 180px;">
+                <ul>
+                    <li><strong>主题聚焦：</strong>所有内容围绕<a href="https://asia-cns-worldcup.com">世界杯</a>相关活动与说明展开，减少信息噪音。</li>
+                    <li><strong>结构轻量：</strong>页面层级简洁，入口直观，适合快速浏览。</li>
+                    <li><strong>更新透明：</strong>变动或补充信息通常会在站内直接体现。</li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 180px;">
+                <ul>
+                    <li><strong>访问友好：</strong>适配常见设备，无需额外插件即可使用。</li>
+                    <li><strong>信息自洽：</strong>规则、介绍与常见问题均在同一站点内呈现。</li>
+                    <li><strong>无强制互动：</strong>浏览为主，不设置强制注册或跳转。</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 0.8rem; font-size: 0.95rem; background: #f2f4f8; padding: 0.6rem 1rem; border-radius: 12px;">
+            💡 如果你正在寻找一个围绕“世界杯”主题、提供清晰说明与参与途径的网站，可以花几分钟浏览本站内容。
+        </p>
+    </div>
+
+    <!-- 卡片3: 使用建议 (场景) -->
+    <div class="card">
+        <h2>🧭 适合在哪些场景下使用？</h2>
+        <div class="suggest-grid">
+            <div class="suggest-item">
+                <strong>📖 初次了解活动</strong>
+                <p>想快速确认某场区域性世界杯的基本框架、时间脉络或参与方式。</p>
+            </div>
+            <div class="suggest-item">
+                <strong>🔍 查阅规则与说明</strong>
+                <p>需要核对规则细节、报名条件或常见疑问，站点内通常有对应板块。</p>
+            </div>
+            <div class="suggest-item">
+                <strong>📬 获取一手动态</strong>
+                <p>如果站内发布更新或补充公告，可作为信息来源之一进行参考。</p>
+            </div>
+            <div class="suggest-item">
+                <strong>🧩 辅助决策参考</strong>
+                <p>结合网站提供的内容，帮助你判断是否参与或跟进相关活动。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 卡片4: 可信但克制的访问说明 -->
+    <div class="card">
+        <h2>🔐 关于使用与访问</h2>
+        <p style="margin-bottom: 0.6rem;">
+            该网站为公开可访问的页面，内容由运营方提供并维护。我们建议你在使用前：
+        </p>
+        <ul style="margin-bottom: 0.8rem;">
+            <li>确认自己的网络环境能够正常打开站点。</li>
+            <li>留意站内标注的日期、规则或版本说明，部分信息可能具有时效性。</li>
+            <li>如遇到链接或内容异常，可通过站内联系方式或相关渠道核实。</li>
+        </ul>
+        <p>
+            直接访问 <a href="https://asia-cns-worldcup.com">世界杯</a> 主题页面，即可查看当前版本的结构与主要内容。网站不收集你的个人信息，也不要求注册即可浏览大部分页面。
+        </p>
+        <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: #f1f3f7; border-radius: 14px; border-left: 3px solid #b0b6c4;">
+            <span style="font-weight: 500;">🕊️ 提示：</span> 如果页面内容与你的需求不完全匹配，也可以关注后续更新或参考其他可靠渠道。
+        </div>
+    </div>
+
+    <!-- 卡片5: FAQ 摘要 (简洁) -->
+    <div class="card">
+        <h2>❓ 常见疑问摘要</h2>
+        <div class="faq-item">
+            <strong>这个网站是官方唯一渠道吗？</strong>
+            <p>网站由相关运营方搭建，但建议同时留意官方或主办方发布的其他信息。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要付费才能使用？</strong>
+            <p>浏览站内公开内容无需付费。部分活动或报名可能存在费用，以站内具体说明为准。</p>
+        </div>
+        <div class="faq-item">
+            <strong>页面打不开或显示异常怎么办？</strong>
+            <p>可尝试刷新、切换网络或使用其他浏览器。若持续异常，可稍后重试。</p>
+        </div>
+        <div class="faq-item">
+            <strong>网站内容多久更新一次？</strong>
+            <p>更新频率不固定，以实际需要为准。建议在关键节点前后主动查看。</p>
+        </div>
+    </div>
+
+    <!-- 结尾 / 再次嵌入链接 -->
+    <div style="text-align: center; margin: 1.4rem 0 1rem;">
+        <span style="background: #e9ecf2; padding: 0.3rem 1.2rem; border-radius: 40px; font-size: 0.95rem; color: #2d3140;">
+            → 如需直接了解，可访问 <a href="https://asia-cns-worldcup.com">世界杯</a> 站点查看完整内容。
+        </span>
+    </div>
+
+    <div class="footer-note">
+        本页面为产品说明式介绍，旨在帮助用户快速识别网站用途。<br>
+        内容基于公开信息整理，不构成任何承诺或诱导。 © 2025 亚洲 CNS 世界杯
+    </div>
+
+</div>
+</body>
+</html>
