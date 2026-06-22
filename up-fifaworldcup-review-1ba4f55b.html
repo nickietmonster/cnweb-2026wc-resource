@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于世界杯 · 导航介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f6f6f0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2c2c2c;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 800px;
+      width: 100%;
+      padding: 2rem 1.5rem;
+      background: #f6f6f0;
+    }
+
+    /* ——— 顶部导航 ——— */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0 1.25rem;
+      border-bottom: 1px solid #d9d9d0;
+      margin-bottom: 3rem;
+    }
+
+    .nav-logo {
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      color: #1f4f3d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3d5a4b;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1f3a2e;
+    }
+
+    /* ——— 标题层级 ——— */
+    h1 {
+      font-weight: 400;
+      font-size: 2.4rem;
+      letter-spacing: -0.01em;
+      color: #1f3a2e;
+      margin: 1.5rem 0 0.75rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: #1f3a2e;
+      border-left: 4px solid #b7c7b1;
+      padding-left: 1rem;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: #2b4a39;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      color: #404040;
+    }
+
+    a {
+      color: #2d6b4a;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      transition: color 0.15s;
+    }
+
+    a:hover {
+      color: #15442d;
+    }
+
+    .hero-meta {
+      margin-top: -0.3rem;
+      font-size: 0.95rem;
+      color: #6e7c71;
+    }
+
+    /* ——— 三个场景卡片 ——— */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0 1.2rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.2rem 1.8rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(0, 20, 10, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 20, 10, 0.07);
+    }
+
+    .scene-card h3 {
+      border-bottom: 1px solid #eaeae2;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #4d4d4d;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ——— 说明区块 (FAQ 摘要) ——— */
+    .faq-block {
+      background: #edeee6;
+      border-radius: 28px;
+      padding: 1.8rem 2rem 2rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .faq-block h2 {
+      border-left: none;
+      padding-left: 0;
+      margin: 0 0 1.8rem;
+      font-size: 1.4rem;
+      color: #1b3f2f;
+    }
+
+    .faq-item {
+      margin-bottom: 1.6rem;
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      color: #1f3f30;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-answer {
+      color: #4a5c50;
+      font-size: 0.95rem;
+      padding-left: 0.2rem;
+    }
+
+    /* ——— 页脚 ——— */
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d9d9d0;
+      font-size: 0.85rem;
+      color: #6a7a6d;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ——— 响应式 ——— */
+    @media (max-width: 680px) {
+      .page {
+        padding: 1.25rem 1rem;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      .scene-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .faq-block {
+        padding: 1.5rem 1.2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 440px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .scene-card {
+        padding: 1.2rem 0.9rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 导航 -->
+  <nav>
+    <span class="nav-logo">⚽ 赛事志</span>
+    <div class="nav-links">
+      <a href="#">介绍</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+    </div>
+  </nav>
+
+  <!-- hero 区 -->
+  <section>
+    <h1>世界杯 · 关于足球的集体记忆</h1>
+    <p class="hero-meta">每一届赛事都承载着独特的叙事与情感</p>
+    <p>
+      从乌rugua的马拉卡纳到卡塔尔的卢赛尔，<a href="https://up-fifaworldcup.com">世界杯</a>早已不仅是竞技场上的较量，
+      更是不同文化、语言和人群在同一个夏天交汇的舞台。它让我们在屏幕前屏息，也让我们在深夜为一次绝妙配合而欢呼。
+    </p>
+    <p>
+      在信息更迭迅速的今天，围绕世界杯的资讯、数据分析、经典回顾以及未来动向，往往散落在不同平台。
+      对于真正关心这项赛事的朋友而言，能够在一个专注的角落里安静地了解其脉络，是一种难得的体验。
+    </p>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <h2>三种观看·理解世界杯的视角</h2>
+  <div class="scene-grid">
+    <div class="scene-card">
+      <h3>🏟️ 赛程与氛围</h3>
+      <p>小组赛的不确定性、淘汰赛的紧张感——每一场比赛都像一段独特的叙事弧线。从赛前预测到终场哨响，沿途的战术博弈与情绪起伏正是世界杯最动人的部分。</p>
+    </div>
+    <div class="scene-card">
+      <h3>📘 历史与回望</h3>
+      <p>贝利、马拉多纳、齐达内、梅西……那些被反复播放的经典片段，串联起不同年代球迷的共同语言。每一届赛事都留下了一些至今仍被讨论的瞬间，它们成为足球文化里闪耀的锚点。</p>
+    </div>
+    <div class="scene-card">
+      <h3>🌍 文化与社会</h3>
+      <p>世界杯也是一面镜子，映射着东道主的风貌、全球球迷的迁移以及足球与日常生活的交织。赛场外的故事——街头观赛、球迷区、纪念品——同样耐人寻味。</p>
+    </div>
+  </div>
+
+  <!-- 常见说明（FAQ 摘要） -->
+  <div class="faq-block">
+    <h2>一些你可能关心的话题</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">⚡ 如何找到可靠的世界杯信息？</div>
+      <div class="faq-answer">官方渠道与中立资讯站各有侧重。你可以先从关于 <a href="https://up-fifaworldcup.com">世界杯</a> 的综合介绍开始，建立对赛事框架的基本认知，再根据兴趣深入具体的球队或历史数据。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">📆 下一届世界杯在什么时候？</div>
+      <div class="faq-answer">下一届男子世界杯将在2026年由美国、加拿大和墨西哥联合举办，届时参赛队伍将扩大至48支。女子世界杯则计划于2027年在巴西举行。具体赛程和时间可留意后续官方发布。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">🎯 经典比赛录像在哪里回看？</div>
+      <div class="faq-answer">FIFA 官方网站及部分授权的体育平台会上传历史精选。一些社区网站也会整理历届淘汰赛的完整录像与集锦，不过需要注意版权与画质差异。</div>
+    </div>
+  </div>
+
+  <!-- 简短的结语与页脚 -->
+  <p style="font-size: 0.95rem; margin-top: 0.2rem;">
+    世界杯的魅力在于它始终在变化，也始终有不变的期待。无论你是多年老球迷，还是刚刚开始关注这项运动，
+    关于<a href="https://up-fifaworldcup.com">世界杯</a>的每一个故事，都值得以自己的节奏去发现。
+  </p>
+
+  <footer>
+    <span>© 赛事志 · 非官方介绍页</span>
+    <span>以足球为线索 · 安静地叙述</span>
+  </footer>
+</div>
+</body>
+</html>
