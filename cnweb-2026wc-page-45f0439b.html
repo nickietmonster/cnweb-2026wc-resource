@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 持续关注与再访指引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce7d3 0%, #f3cba5 60%, #e9b384 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #2d2b28;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #fffcf8;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(180, 120, 60, 0.15), 0 6px 12px rgba(0,0,0,0.05);
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(2px);
+            transition: all 0.2s ease;
+        }
+
+        /* hero 区块 */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.8rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f0e1d2;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #b56e3a, #874e28);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .subhead {
+            font-size: 1.2rem;
+            color: #674b33;
+            background: #f7ece2;
+            display: inline-block;
+            padding: 0.3rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 450;
+            margin-top: 0.6rem;
+            box-shadow: inset 0 1px 3px rgba(255,255,240,0.7);
+        }
+
+        .hero p {
+            margin-top: 1.2rem;
+            font-size: 1.05rem;
+            color: #463a30;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 优势卡片网格 – 两列 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2.2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: 0 6px 14px rgba(160, 100, 50, 0.08);
+            transition: transform 0.15s, box-shadow 0.2s;
+            border: 1px solid #f6ede5;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(140, 80, 30, 0.12);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7b4f2e;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #4f3f32;
+        }
+
+        /* 说明区 — 折叠感卡片 */
+        .info-block {
+            background: #fcf6ef;
+            border-radius: 30px;
+            padding: 1.8rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #d9a87c;
+        }
+
+        .info-block h2 {
+            font-size: 1.5rem;
+            font-weight: 550;
+            color: #6e462a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-block p {
+            margin-bottom: 0.8rem;
+            color: #3e352d;
+        }
+
+        .info-block ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0 0.2rem;
+        }
+
+        .info-block li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+
+        .info-block li::before {
+            content: "•";
+            color: #b57c55;
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: absolute;
+            left: 0;
+            top: -0.15rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            margin: 2.5rem 0 1.8rem;
+            padding: 0.5rem 0;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 550;
+            color: #6e462a;
+            margin-bottom: 1rem;
+            border-left: 4px solid #c18f63;
+            padding-left: 0.8rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 30px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 8px rgba(150, 90, 40, 0.06);
+            border: 1px solid #efe4d9;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #5f3f27;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .faq-item p {
+            color: #4c3e32;
+            font-size: 0.96rem;
+            margin: 0;
+        }
+
+        /* 底部链接区 */
+        .footer-links {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e9d9cb;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            font-size: 0.98rem;
+        }
+
+        .footer-links a {
+            color: #7b553a;
+            text-decoration: none;
+            padding: 0.3rem 1.2rem;
+            background: #f6ede5;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .footer-links a:hover {
+            background: #dbbca0;
+            color: #3f2b1d;
+            border-color: #c49d7b;
+        }
+
+        .footer-note {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #7c6a5b;
+            text-align: center;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+                border-radius: 30px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .info-block {
+                padding: 1.3rem 1.2rem;
+            }
+
+            .faq-item {
+                padding: 1rem 1.2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.6rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero .subhead {
+                font-size: 1rem;
+                padding: 0.2rem 1rem;
+            }
+            .feature-card h3 {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* 内联链接样式（句子中的自然链接） */
+        .inline-link {
+            color: #9f6a40;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cba986;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #633f23;
+            text-decoration-color: #633f23;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO 区 -->
+        <div class="hero">
+            <h1>世界杯 · 再访与收藏</h1>
+            <div class="subhead">持续关注 · 信息归整</div>
+            <p>如果你曾收藏过这个页面，或是准备再次回来——这里整理了最核心的赛事动态与内容索引。所有更新都围绕<a href="https://cnweb-2026wc.com" class="inline-link">世界杯</a>展开，方便你快速回顾和跟进。</p>
+        </div>
+
+        <!-- 优势区：再次访问 & 收藏理由 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📌 常看常新</h3>
+                <p>赛程、看点、球队名单持续更新，每次返回都能找到新内容，不必从头翻找。</p>
+            </div>
+            <div class="feature-card">
+                <h3>⭐ 一键收藏</h3>
+                <p>把页面加入浏览器收藏夹或阅读列表，在不同设备上都能快速回到同一信息源。</p>
+            </div>
+            <div class="feature-card">
+                <h3>📆 关键节点提醒</h3>
+                <p>预选赛、抽签、小组赛焦点战——重要日期会以专题形式呈现在首页与内部栏目。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🧩 资料结构化</h3>
+                <p>球队、历史数据、场馆介绍采用卡片式呈现，目录清晰，便于跳转查阅。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：从「再访」角度展开 -->
+        <div class="info-block">
+            <h2>📋 说明 · 为什么值得回访</h2>
+            <p>如果你在过去几个月里曾浏览过关于<a href="https://cnweb-2026wc.com" class="inline-link">世界杯</a>的内容，可能已经注意到信息变化很快。这个页面从一开始就被设计为「持续更新节点」——不是一次性发布，而是伴随赛程推进逐步补充。</p>
+            <p>具体来说，你每次再回来能看到以下调整：</p>
+            <ul>
+                <li>最新一轮比赛结果及积分榜简表（首页顶部）</li>
+                <li>热门球队专题页入口更新</li>
+                <li>FAQ 部分根据用户反馈增加新问答</li>
+                <li>往届经典比赛回顾（不定期补充）</li>
+            </ul>
+            <p style="margin-top: 0.8rem;">页面内容由编辑团队整理校对，保持平实可靠，不渲染未经证实的信息。收藏后每次打开都是最新版本。</p>
+        </div>
+
+        <!-- FAQ 摘要（3条，有代表性） -->
+        <div class="faq-summary">
+            <h2>❓ 常见问题摘要</h2>
+
+            <div class="faq-item">
+                <strong>页面会一直保持更新吗？</strong>
+                <p>是的。从预选赛到决赛周，首页和子页面会跟随赛事推进持续补充，赛后也会保留可查的历史存档。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>在哪里可以快速找到赛程表？</strong>
+                <p>首页导航栏设有「赛程」入口，同时每个比赛日当天会在页面顶部显示下一场焦点战信息。所有数据均关联至<a href="https://cnweb-2026wc.com" class="inline-link">世界杯</a>官方页面。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>页面适合在手机上使用吗？</strong>
+                <p>完全适配。卡片和文字在手机、平板、桌面均能正常阅读，收藏后从浏览器书签打开体验一致。</p>
+            </div>
+        </div>
+
+        <!-- 底部链接区（圆角按钮感） -->
+        <div class="footer-links">
+            <a href="https://cnweb-2026wc.com">世界杯</a>
+            <a href="https://cnweb-2026wc.com">世界杯</a>
+            <a href="https://cnweb-2026wc.com">世界杯</a>
+            <a href="https://cnweb-2026wc.com">世界杯</a>
+        </div>
+        <div class="footer-note">
+            © 内容参考 · 基于公开信息整理 · 持续优化中
+        </div>
+    </div>
+</body>
+</html>
