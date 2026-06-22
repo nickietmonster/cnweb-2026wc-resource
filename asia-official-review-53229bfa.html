@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 简明访问指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fae7d1 0%, #f7d9c2 45%, #efc9ad 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 1.2rem 3.5rem;
+            line-height: 1.6;
+            color: #2f2a24;
+        }
+
+        .page-wrapper {
+            max-width: 1180px;
+            width: 100%;
+            margin-top: 2.2rem;
+        }
+
+        /* ------- 顶部导航 ------- */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 245, 235, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            box-shadow: 0 8px 18px rgba(140, 80, 40, 0.08);
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 215, 180, 0.3);
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #9f5f2b, #b87a44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5f422e;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #a36331;
+            border-bottom-color: #c5895a;
+        }
+
+        /* ------- 卡片通用 ------- */
+        .card {
+            background: #fffcf9;
+            border-radius: 40px;
+            padding: 2.4rem 2.8rem;
+            box-shadow: 0 18px 36px -12px rgba(110, 60, 28, 0.18);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 235, 218, 0.6);
+            transition: box-shadow 0.25s;
+        }
+
+        .card:hover {
+            box-shadow: 0 22px 44px -12px rgba(100, 50, 20, 0.22);
+        }
+
+        /* ------- Hero / 核心介绍 ------- */
+        .hero-section {
+            text-align: center;
+            padding: 3.2rem 2.8rem 2.8rem;
+        }
+
+        .hero-section h1 {
+            font-size: 2.8rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #743f1e, #b16f3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.9rem;
+            line-height: 1.2;
+        }
+
+        .hero-section .subhead {
+            font-size: 1.2rem;
+            color: #6f4d32;
+            max-width: 680px;
+            margin: 0 auto 1.6rem;
+            background: rgba(235, 210, 186, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .hero-section p {
+            max-width: 760px;
+            margin: 0.8rem auto;
+            color: #3e3127;
+            font-size: 1.05rem;
+        }
+
+        .hero-link-wrapper {
+            margin-top: 1.8rem;
+        }
+
+        .hero-link-wrapper a {
+            display: inline-block;
+            background: #daa06a;
+            color: #2a1d14;
+            padding: 0.6rem 2.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(160, 90, 40, 0.15);
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid #eecbad;
+        }
+
+        .hero-link-wrapper a:hover {
+            background: #cf9259;
+            transform: translateY(-2px);
+        }
+
+        /* ------- 三个场景模块 ------- */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .scene-card {
+            background: #fffcf9;
+            border-radius: 32px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 12px 24px -10px rgba(110, 60, 28, 0.12);
+            border: 1px solid rgba(240, 210, 185, 0.25);
+        }
+
+        .scene-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #633f23;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .scene-card p {
+            color: #3f342b;
+            font-size: 0.96rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #eddaca;
+            padding: 0.15rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #553e2b;
+            margin-top: 0.3rem;
+        }
+
+        /* ------- 常见说明 / FAQ 摘要 ------- */
+        .faq-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px dashed #e7d4c2;
+            padding-bottom: 0.9rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #583f2b;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .faq-q::before {
+            content: "▹";
+            color: #b87844;
+            font-weight: 400;
+        }
+
+        .faq-a {
+            color: #3f332a;
+            font-size: 0.95rem;
+            padding-left: 1.1rem;
+        }
+
+        .faq-a a {
+            color: #a15f31;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+
+        .faq-a a:hover {
+            color: #7a4522;
+        }
+
+        /* ------- 底部 ------- */
+        .footer-note {
+            text-align: center;
+            color: #5c4534;
+            font-size: 0.9rem;
+            margin-top: 1.2rem;
+            padding: 1rem 0 0.3rem;
+            border-top: 1px solid rgba(180, 140, 105, 0.2);
+            opacity: 0.85;
+        }
+
+        /* ------- 响应式 ------- */
+        @media (max-width: 900px) {
+            .scenes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .card {
+                padding: 2rem 1.8rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+                border-radius: 30px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.2rem;
+            }
+            .hero-section h1 {
+                font-size: 1.9rem;
+            }
+            .hero-section .subhead {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- 顶部导航 -->
+        <nav class="top-nav">
+            <span class="nav-brand">⚽ 简明指南</span>
+            <div class="nav-links">
+                <a href="#intro">概览</a>
+                <a href="#scenes">场景</a>
+                <a href="#faq">常见说明</a>
+            </div>
+        </nav>
+
+        <!-- 核心介绍 / Hero -->
+        <section class="card hero-section" id="intro">
+            <h1>世界杯 · 访问提醒</h1>
+            <div class="subhead">从信息获取到使用路径</div>
+            <p>
+                <strong>世界杯</strong> 作为全球关注的体育盛事，其官方信息平台承载着赛程、数据与实时动态。
+                本页提供一份轻量化导航，帮助您快速定位值得信赖的内容来源。
+            </p>
+            <p>
+                无论您是资深球迷还是初次关注，了解官方渠道的特性与边界，
+                都能让您的信息获取更加高效。以下从三个常见使用场景展开。
+            </p>
+            <div class="hero-link-wrapper">
+                <a href="https://asia-official-sjb.com">世界杯</a>
+            </div>
+            <p style="font-size: 0.9rem; margin-top: 1.2rem; opacity: 0.7;">
+                直接访问官方站点，获取第一手资讯。
+            </p>
+        </section>
+
+        <!-- 三个场景模块 -->
+        <section id="scenes" style="margin-bottom: 0.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; flex-wrap: wrap;">
+                <h2 style="font-weight: 600; color: #4d3826; font-size: 1.5rem;">常见使用场景</h2>
+                <span style="font-size: 0.85rem; color: #6c5542;">三个典型路径</span>
+            </div>
+            <div class="scenes-grid">
+                <div class="scene-card">
+                    <h3>📋 赛程与结果</h3>
+                    <p>在官方页面可以查询完整赛历、比赛时间、场地及实时比分。适合赛前规划与赛后回顾。</p>
+                    <span class="tag">数据可靠</span>
+                </div>
+                <div class="scene-card">
+                    <h3>🏆 球队与球员</h3>
+                    <p>了解参赛队伍阵容、球员数据、历史战绩。官方信息源在准确性与更新速度上更有保障。</p>
+                    <span class="tag">权威统计</span>
+                </div>
+                <div class="scene-card">
+                    <h3>📰 新闻与公告</h3>
+                    <p>官方发布的赛事新闻、规则变更、票务提醒等内容，是避免信息失真的重要参考。</p>
+                    <span class="tag">一手信息</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见说明 / FAQ 摘要 -->
+        <section class="card" id="faq">
+            <h2 style="font-weight: 600; color: #4d3826; font-size: 1.4rem; margin-bottom: 1.2rem;">常见说明</h2>
+            <div class="faq-block">
+                <div class="faq-item">
+                    <div class="faq-q">官方站点是否支持中文界面？</div>
+                    <div class="faq-a">
+                        是的，<a href="https://asia-official-sjb.com">世界杯</a> 官方页面提供多语言选项，中文用户可以较为顺畅地浏览主要内容。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">如何确认我访问的是官方渠道？</div>
+                    <div class="faq-a">
+                        建议直接通过本页提供的链接进入，并核对域名是否为 asia-official-sjb.com 。避免使用第三方聚合页面，以防信息滞后。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">是否需要注册或付费才能查看基本信息？</div>
+                    <div class="faq-a">
+                        赛程、球队数据、新闻等核心内容通常免费公开。部分高级统计或直播功能可能有区域限制，请以页面实际提示为准。
+                    </div>
+                </div>
+                <div class="faq-item" style="border-bottom: none;">
+                    <div class="faq-q">移动设备访问体验如何？</div>
+                    <div class="faq-a">
+                        官方站点采用自适应设计，在手机与平板上均可正常浏览。导航栏会折叠为汉堡菜单，触控交互友好。
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 1.4rem; background: #f3e7dc; padding: 0.6rem 1.2rem; border-radius: 36px; font-size: 0.9rem; color: #4f3929;">
+                💡 提示：如遇到页面加载异常，请检查网络连接，或尝试更换浏览器至最新版本。
+            </div>
+        </section>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            基于官方公开信息整理 · 保持理性判断 · <a href="https://asia-official-sjb.com" style="color: #7a4d2c; text-decoration: underline; text-underline-offset: 2px;">世界杯</a> 官方资源
+        </div>
+    </div>
+</body>
+</html>
